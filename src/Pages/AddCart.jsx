@@ -9,9 +9,9 @@ const AddCart = () => {
   } = useForm();
 
   const onSubmit = data => {
-    const { name, chef, details, supplier, taste, photo } = data;
+    const { name, chef, details, supplier, taste, photo, category } = data;
 
-    const formData = { name, chef, details, supplier, taste, photo };
+    const formData = { name, chef, details, supplier, taste, photo, category };
     console.log(formData);
     fetch('http://localhost:5000/coffees', {
       method: 'POST',

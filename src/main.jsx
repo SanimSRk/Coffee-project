@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import ManiRote from './layout/ManiRote';
 import Coffee from './Pages/Coffee';
 import AddCart from './Pages/AddCart';
+import CoffeeUptade from './Pages/CoffeeUptade';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -18,6 +19,12 @@ const router = createBrowserRouter([
       {
         path: '/addCart',
         element: <AddCart></AddCart>,
+      },
+      {
+        path: '/updates/:id',
+        element: <CoffeeUptade></CoffeeUptade>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/coffees/${params.id}`),
       },
     ],
   },
