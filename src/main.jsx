@@ -6,6 +6,10 @@ import ManiRote from './layout/ManiRote';
 import Coffee from './Pages/Coffee';
 import AddCart from './Pages/AddCart';
 import CoffeeUptade from './Pages/CoffeeUptade';
+import SingUP from './Pages/SingUP';
+import Login from './Pages/Login';
+import AuthProvider from './AutProvider/AuthProvider';
+import Users from './Compment/Users';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -26,11 +30,27 @@ const router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`http://localhost:5000/coffees/${params.id}`),
       },
+      {
+        path: '/singUp',
+        element: <SingUP></SingUP>,
+      },
+      {
+        path: '/Login',
+        element: <Login></Login>,
+      },
+      {
+        path: '/user',
+        element: <Users></Users>,
+        loader: () => fetch('http://localhost:5000/users'),
+      },
     ],
   },
 ]);
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      {' '}
+      <RouterProvider router={router} />{' '}
+    </AuthProvider>
   </React.StrictMode>
 );
